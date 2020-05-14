@@ -1,7 +1,6 @@
 //comparator for vectors;
 
-struct cmp { 
-    bool operator()(pll const& p1,pll const& p2) { 
+    bool cmp ()(pll const& p1,pll const& p2) { 
         // return "true" if "p1" is ordered  
         // before "p2", for example: 
         int f = p1.second - p1.first ,s = p2.second - p2.first;  
@@ -10,13 +9,12 @@ struct cmp {
         }
         return f < s;
     } 
-}; 
 int main()
 {fast;
     vpll v;
     v.pb({10,20});
     v.pb({20,25});
-    sort(all(v),cmp());
+    sort(all(v),cmp);                           //here you have to pass the function
     cout<<v[0].first<<" "<<v[0].second;
     cout<<v[1].first<<" "<<v[1].second;
 }
@@ -37,7 +35,7 @@ struct cmp {
 }; 
 int main()
 {fast;
-        priority_queue<pll,vpll,cmp> q;        //only difference in vector we pass it as function
+        priority_queue<pll,vpll,cmp> q;        //here you will have to pass struct
             q.push({0,n-1});
         while(!q.empty())
         {
