@@ -1,0 +1,62 @@
+//comparator for vectors;
+
+struct cmp { 
+    bool operator()(pll const& p1,pll const& p2) { 
+        // return "true" if "p1" is ordered  
+        // before "p2", for example: 
+        int f = p1.second - p1.first ,s = p2.second - p2.first;  
+        if(f == s){
+          return p1.first > p2.first;
+        }
+        return f < s;
+    } 
+}; 
+int main()
+{fast;
+    vpll v;
+    v.pb({10,20});
+    v.pb({20,25});
+    sort(all(v),cmp());
+    cout<<v[0].first<<" "<<v[0].second;
+    cout<<v[1].first<<" "<<v[1].second;
+}
+
+
+//comparator for priority queue
+
+struct cmp { 
+    bool operator()(pll const& p1,pll const& p2) { 
+        // return "true" if "p1" is ordered  
+        // before "p2", for example: 
+        int f = p1.second - p1.first ,s = p2.second - p2.first;  
+        if(f == s){
+          return p1.first > p2.first;
+        }
+        return f < s;
+    } 
+}; 
+int main()
+{fast;
+    test{ 
+        ll n,c=1;
+        read(n);
+        vll arr(n);
+        priority_queue<pll,vpll,cmp> q;
+            q.push({0,n-1});
+ 
+        while(!q.empty())
+        {
+            pair<int,int> p = q.top();
+            q.pop();
+            ll u = p.second, v = p.first;
+            ll mid=(u+v)/2;
+            arr[mid]=c;
+            if(v<mid)
+            q.push({v,mid-1});
+            if(u>mid)
+            q.push({mid+1,u});
+        c++;
+        // cout<<u<<" "<<mid<<"\n";
+    }
+    write(arr);
+}}
