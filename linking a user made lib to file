@@ -6,7 +6,7 @@ Typically in C and C++ using a library goes like this: you #include some headers
 declarations - i.e. they tell the compiler that the symbols you need do exist somewhere, without actually providing their code. 
 Whenever you use them, the compiler will place in the object file a placeholder, which says that that function call is to be 
 resolved at link time, when the rest of the object modules will be available.
-eg->(g++ lib.cpp use.cpp -o use)(its like saying to compiler in the object file of use.cpp(use.o) make placeholders)
+eg->(g++ lib.cpp use.cpp -o use)(its like saying to linker in the object file of use.cpp(use.o) make placeholders)
 
 
 Then, at the moment of linking, you have to specify the actual library where the compiled code for the functions of the library 
